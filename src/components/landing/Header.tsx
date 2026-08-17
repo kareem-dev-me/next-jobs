@@ -2,15 +2,23 @@
 
 import { useState } from "react";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { FigmaAsset } from "@/components/ui/FigmaAsset";
 
 const navLinks = [
   { label: "Find Jobs", href: "#" },
-  { label: "Browse Companies", href: "#" },
+  { label: "Browse Companies", href: "/companies" },
 ];
+
+function navClassName(active: boolean) {
+  return `px-2 py-1 text-base font-medium ${
+    active ? "text-navy" : "text-muted hover:text-primary"
+  }`;
+}
 
 export function Header() {
   const [open, setOpen] = useState(false);
+  const pathname = usePathname();
 
   return (
     <header className="relative z-30 bg-ghost">
@@ -29,15 +37,26 @@ export function Header() {
             </span>
           </Link>
           <nav className="hidden items-center gap-4 md:flex">
-            {navLinks.map((link) => (
-              <a
-                key={link.label}
-                href={link.href}
-                className="px-2 py-1 text-base font-medium text-muted hover:text-primary"
-              >
-                {link.label}
-              </a>
-            ))}
+            {navLinks.map((link) => {
+              const active = link.href !== "#" && pathname === link.href;
+              return link.href === "#" ? (
+                <a
+                  key={link.label}
+                  href={link.href}
+                  className={navClassName(active)}
+                >
+                  {link.label}
+                </a>
+              ) : (
+                <Link
+                  key={link.label}
+                  href={link.href}
+                  className={navClassName(active)}
+                >
+                  {link.label}
+                </Link>
+              );
+            })}
           </nav>
         </div>
 
@@ -81,16 +100,28 @@ export function Header() {
       {open ? (
         <div className="border-t border-line bg-ghost px-4 py-4 md:hidden">
           <nav className="flex flex-col gap-3">
-            {navLinks.map((link) => (
-              <a
-                key={link.label}
-                href={link.href}
-                className="py-2 text-base font-medium text-muted"
-                onClick={() => setOpen(false)}
-              >
-                {link.label}
-              </a>
-            ))}
+            {navLinks.map((link) => {
+              const active = link.href !== "#" && pathname === link.href;
+              return link.href === "#" ? (
+                <a
+                  key={link.label}
+                  href={link.href}
+                  className={`py-2 text-base font-medium ${active ? "text-navy" : "text-muted"}`}
+                  onClick={() => setOpen(false)}
+                >
+                  {link.label}
+                </a>
+              ) : (
+                <Link
+                  key={link.label}
+                  href={link.href}
+                  className={`py-2 text-base font-medium ${active ? "text-navy" : "text-muted"}`}
+                  onClick={() => setOpen(false)}
+                >
+                  {link.label}
+                </Link>
+              );
+            })}
             <Link
               href="/login"
               className="py-2 text-base font-bold text-primary"

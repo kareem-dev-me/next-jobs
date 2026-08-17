@@ -30,12 +30,21 @@ export function Footer() {
               <ul className="space-y-4">
                 {column.links.map((link) => (
                   <li key={link}>
-                    <a
-                      href="#"
-                      className="text-base text-line/80 hover:text-white"
-                    >
-                      {link}
-                    </a>
+                    {link === "Companies" ? (
+                      <Link
+                        href="/companies"
+                        className="text-base text-line/80 hover:text-white"
+                      >
+                        {link}
+                      </Link>
+                    ) : (
+                      <a
+                        href="#"
+                        className="text-base text-line/80 hover:text-white"
+                      >
+                        {link}
+                      </a>
+                    )}
                   </li>
                 ))}
               </ul>
