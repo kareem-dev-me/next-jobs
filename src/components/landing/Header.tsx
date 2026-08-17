@@ -6,7 +6,7 @@ import { usePathname } from "next/navigation";
 import { FigmaAsset } from "@/components/ui/FigmaAsset";
 
 const navLinks = [
-  { label: "Find Jobs", href: "#" },
+  { label: "Find Jobs", href: "/" },
   { label: "Browse Companies", href: "/companies" },
 ];
 
