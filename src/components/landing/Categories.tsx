@@ -1,5 +1,5 @@
-import Image from "next/image";
 import { Arrow } from "@/components/ui/Arrow";
+import { CategoryCard } from "@/components/ui/CategoryCard";
 import { categories } from "@/data/landing";
 
 export function Categories() {
@@ -22,32 +22,11 @@ export function Categories() {
         <ul className="mt-8 grid grid-cols-1 gap-4 sm:grid-cols-2 sm:gap-6 lg:mt-12 lg:grid-cols-4 lg:gap-8">
           {categories.map((category) => (
             <li key={category.name}>
-              <a
-                href="#"
-                className={`flex h-full flex-col gap-8 border p-8 transition ${
-                  category.highlighted
-                    ? "border-primary bg-primary shadow-[0_24px_48px_-12px_rgba(70,64,222,0.28)]"
-                    : "border-line bg-white hover:border-primary"
-                }`}
-              >
-                <span className="flex size-12 overflow-clip">
-                  <Image
-                    src={category.icon}
-                    alt=""
-                    width={48}
-                    height={48}
-                    unoptimized={category.icon.endsWith(".svg")}
-                    className="size-full object-contain"
-                  />
-                </span>
-                <span className="flex flex-col gap-3">
-                  <span
-                    className={`text-2xl font-semibold leading-7 ${
-                      category.highlighted ? "text-white" : "text-navy"
-                    }`}
-                  >
-                    {category.name}
-                  </span>
+              <CategoryCard
+                name={category.name}
+                icon={category.icon}
+                highlighted={category.highlighted}
+                footer={
                   <span
                     className={`flex items-center justify-between text-lg leading-7 ${
                       category.highlighted ? "text-white/80" : "text-subtle"
@@ -60,8 +39,8 @@ export function Categories() {
                       }
                     />
                   </span>
-                </span>
-              </a>
+                }
+              />
             </li>
           ))}
         </ul>
