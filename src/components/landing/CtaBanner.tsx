@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Link from "next/link";
 
 export function CtaBanner() {
   return (
@@ -17,12 +18,12 @@ export function CtaBanner() {
               <p className="mt-4 text-base font-medium text-white/80">
                 Start posting jobs for only $10.
               </p>
-              <a
-                href="#"
+              <Link
+                href="/signup"
                 className="mt-6 inline-flex rounded-[4px] bg-white px-6 py-3.5 text-base font-bold text-primary hover:bg-white/90"
               >
                 Sign Up For Free
-              </a>
+              </Link>
             </div>
             <div className="relative min-h-[220px] sm:min-h-[320px] lg:min-h-[430px]">
               <Image

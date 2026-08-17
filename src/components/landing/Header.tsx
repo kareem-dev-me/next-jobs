@@ -42,19 +42,19 @@ export function Header() {
         </div>
 
         <div className="hidden items-center md:flex">
-          <a
-            href="#"
+          <Link
+            href="/login"
             className="px-6 py-2.5 text-base font-bold text-primary hover:text-primary/80"
           >
             Login
-          </a>
+          </Link>
           <span className="mx-2 h-12 w-px bg-line" aria-hidden="true" />
-          <a
-            href="#"
+          <Link
+            href="/signup"
             className="rounded-[4px] bg-primary px-6 py-2.5 text-base font-bold text-white hover:bg-primary/90"
           >
             Sign Up
-          </a>
+          </Link>
         </div>
 
         <button
@@ -91,15 +91,20 @@ export function Header() {
                 {link.label}
               </a>
             ))}
-            <a href="#" className="py-2 text-base font-bold text-primary">
+            <Link
+              href="/login"
+              className="py-2 text-base font-bold text-primary"
+              onClick={() => setOpen(false)}
+            >
               Login
-            </a>
-            <a
-              href="#"
+            </Link>
+            <Link
+              href="/signup"
               className="rounded-[4px] bg-primary px-6 py-3 text-center text-base font-bold text-white"
+              onClick={() => setOpen(false)}
             >
               Sign Up
-            </a>
+            </Link>
           </nav>
         </div>
       ) : null}
