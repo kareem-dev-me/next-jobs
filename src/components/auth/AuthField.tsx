@@ -9,6 +9,7 @@ type AuthFieldProps = {
   type?: "text" | "email" | "password";
   autoComplete?: string;
   required?: boolean;
+  defaultValue?: string;
 };
 
 const inputClassName =
@@ -21,6 +22,7 @@ export function AuthField({
   type = "text",
   autoComplete,
   required,
+  defaultValue,
 }: AuthFieldProps) {
   const [visible, setVisible] = useState(false);
   const isPassword = type === "password";
@@ -38,6 +40,7 @@ export function AuthField({
             type={visible ? "text" : "password"}
             autoComplete={autoComplete}
             required={required}
+            defaultValue={defaultValue}
             className={`${inputClassName} pr-16`}
           />
           <button
@@ -56,6 +59,7 @@ export function AuthField({
           type={type}
           autoComplete={autoComplete}
           required={required}
+          defaultValue={defaultValue}
           className={inputClassName}
         />
       )}

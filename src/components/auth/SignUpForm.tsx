@@ -13,7 +13,7 @@ export function SignUpForm() {
 
   function handleSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
-    router.push("/");
+    router.push("/dashboard");
   }
 
   return (

@@ -13,7 +13,7 @@ export function LoginForm() {
 
   function handleSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
-    router.push("/");
+    router.push("/dashboard");
   }
 
   return (
